@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для Ани ❤️</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Arial;
+background:linear-gradient(135deg,#ff6a88,#ff99ac);
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+h1{
+font-size:55px;
+text-shadow:0 0 20px white;
+}
+
+.buttons{
+margin-top:30px;
+position:relative;
+}
+
+button{
+padding:15px 35px;
+font-size:22px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+margin:10px;
+}
+
+#yes{
+background:white;
+color:#ff4d6d;
+}
+
+#no{
+background:#ff4d6d;
+color:white;
+position:absolute;
+}
+
+#message{
+margin-top:30px;
+font-size:40px;
+display:none;
+animation:fade 2s;
+}
+
+#ring{
+font-size:90px;
+display:none;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+.heart{
+position:absolute;
+color:#ff2e63;
+font-size:25px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Аня ❤️<br>Будешь моей женой?</h1>
+
+<div class="buttons">
+
+<button id="yes" onclick="love()">Да ❤️</button>
+
+<button id="no" onmouseover="moveButton()" ontouchstart="moveButton()">Нет</button>
+
+</div>
+
+<div id="ring">💍</div>
+
+<div id="message">
+Ты сделала меня самым счастливым ❤️
+</div>
+
+<script>
+
+function love(){
+
+document.getElementById("message").style.display="block";
+document.getElementById("ring").style.display="block";
+
+}
+
+function moveButton(){
+
+let button=document.getElementById("no");
+
+let x=Math.random()*300-150;
+let y=Math.random()*200-100;
+
+button.style.transform="translate("+x+"px,"+y+"px)";
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*35)+"px";
+
+heart.style.animationDuration=(3+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),7000);
+
+}
+
+setInterval(createHeart,250);
+
+</script>
+
+</body>
+</html>
